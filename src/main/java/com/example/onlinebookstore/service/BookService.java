@@ -1,5 +1,7 @@
 package com.example.onlinebookstore.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.example.onlinebookstore.entity.Book;
@@ -16,5 +18,9 @@ public class BookService {
 
 	public void addBook(Book book) {
 		bookRepository.save(book);
+	}
+
+	public Optional<Book> getBook(long barcode) {
+		return bookRepository.findById(barcode);
 	}
 }
