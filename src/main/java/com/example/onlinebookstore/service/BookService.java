@@ -23,4 +23,15 @@ public class BookService {
 	public Optional<Book> getBook(long barcode) {
 		return bookRepository.findById(barcode);
 	}
+
+	public void updateBook(Book book) {
+		Book bookFromDatabase = bookRepository.findById(book.getBarcode()).orElse(null);
+
+		bookFromDatabase.setAuthor(book.getAuthor());
+		bookFromDatabase.setName(book.getName());
+		bookFromDatabase.setPricePerUnit(book.getPricePerUnit());
+		bookFromDatabase.setQuantity(book.getQuantity());
+
+		bookRepository.save(bookFromDatabase);
+	}
 }
