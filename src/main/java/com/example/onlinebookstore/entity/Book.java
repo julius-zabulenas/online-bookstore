@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class Book {
 
 	@Id
-	private int barcode;
+	private long barcode;
 	private String name;
 	private String author;
 	private int quantity;
@@ -29,7 +29,7 @@ public class Book {
 		this.pricePerUnit = pricePerUnit;
 	}
 
-	public int getBarcode() {
+	public long getBarcode() {
 		return barcode;
 	}
 
