@@ -12,6 +12,7 @@ public class Book {
 
 	@Id
 	private long barcode;
+
 	private String name;
 	private String author;
 	private int quantity;
@@ -21,7 +22,7 @@ public class Book {
 
 	}
 
-	public Book(int barcode, String name, String author, int quantity, BigDecimal pricePerUnit) {
+	public Book(long barcode, String name, String author, int quantity, BigDecimal pricePerUnit) {
 		this.barcode = barcode;
 		this.name = name;
 		this.author = author;
@@ -33,7 +34,7 @@ public class Book {
 		return barcode;
 	}
 
-	public void setBarcode(int barcode) {
+	public void setBarcode(long barcode) {
 		this.barcode = barcode;
 	}
 
