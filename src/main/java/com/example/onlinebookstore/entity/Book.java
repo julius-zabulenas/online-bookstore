@@ -17,6 +17,10 @@ public class Book {
 	private int quantity;
 	private BigDecimal pricePerUnit;
 
+	public Book() {
+
+	}
+
 	public Book(int barcode, String name, String author, int quantity, BigDecimal pricePerUnit) {
 		this.barcode = barcode;
 		this.name = name;
