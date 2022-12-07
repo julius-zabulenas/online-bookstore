@@ -1,8 +1,10 @@
 package com.example.onlinebookstore.service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.onlinebookstore.entity.Book;
@@ -40,5 +42,9 @@ public class BookService {
 		Book bookFromDatabase = bookRepository.findById(barcode).orElse(null);
 
 		return bookFromDatabase.getPricePerUnit().multiply(new BigDecimal(bookFromDatabase.getQuantity()));
+	}
+
+	public List<Book> getBooks() {
+		return bookRepository.findAll(Sort.by(Sort.Direction.DESC, "quantity"));
 	}
 }

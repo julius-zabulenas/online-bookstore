@@ -1,6 +1,7 @@
 package com.example.onlinebookstore.controller;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -48,5 +49,10 @@ public class BookController {
 	@GetMapping("/books/{barcode}/total-price")
 	public ResponseEntity<BigDecimal> getBookTotalPrice(@PathVariable long barcode) {
 		return new ResponseEntity<BigDecimal>(bookService.getBookTotalPrice(barcode), HttpStatus.OK);
+	}
+
+	@GetMapping("/books")
+	public ResponseEntity<List<Book>> getBooks() {
+		return new ResponseEntity<List<Book>>(bookService.getBooks(), HttpStatus.OK);
 	}
 }
