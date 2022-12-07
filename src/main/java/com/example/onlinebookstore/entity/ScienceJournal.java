@@ -2,11 +2,14 @@ package com.example.onlinebookstore.entity;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.Range;
+
 import jakarta.persistence.Entity;
 
 @Entity
 public class ScienceJournal extends Book {
 
+	@Range(min = 1, max = 10, message = "Science index must be between 1 and 10")
 	private int scienceIndex;
 
 	public ScienceJournal() {

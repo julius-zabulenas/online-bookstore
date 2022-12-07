@@ -18,6 +18,8 @@ import com.example.onlinebookstore.entity.Book;
 import com.example.onlinebookstore.payload.BookRequest;
 import com.example.onlinebookstore.service.BookService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 public class BookController {
@@ -29,7 +31,7 @@ public class BookController {
 	}
 
 	@PostMapping("/books")
-	public ResponseEntity<HttpStatus> addBook(@RequestBody BookRequest bookRequest) {
+	public ResponseEntity<HttpStatus> addBook(@Valid @RequestBody BookRequest bookRequest) {
 		bookService.addBook(bookRequest);
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
