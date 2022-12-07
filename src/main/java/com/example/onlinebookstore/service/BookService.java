@@ -42,15 +42,37 @@ public class BookService {
 		return bookRepository.findById(barcode);
 	}
 
-	public void updateBook(Book book) {
-		Book bookFromDatabase = bookRepository.findById(book.getBarcode()).orElse(null);
+	public void updateBook(BookRequest bookRequest) {
+		if (bookRequest.getReleaseYear() != null) {
+			AntiqueBook antiqueBookFromDatabase = (AntiqueBook) bookRepository.findById(bookRequest.getBarcode()).orElse(null);
 
-		bookFromDatabase.setAuthor(book.getAuthor());
-		bookFromDatabase.setName(book.getName());
-		bookFromDatabase.setPricePerUnit(book.getPricePerUnit());
-		bookFromDatabase.setQuantity(book.getQuantity());
+			antiqueBookFromDatabase.setAuthor(bookRequest.getAuthor());
+			antiqueBookFromDatabase.setName(bookRequest.getName());
+			antiqueBookFromDatabase.setPricePerUnit(bookRequest.getPricePerUnit());
+			antiqueBookFromDatabase.setQuantity(bookRequest.getQuantity());
+			antiqueBookFromDatabase.setReleaseYear(bookRequest.getReleaseYear());
 
-		bookRepository.save(bookFromDatabase);
+			bookRepository.save(antiqueBookFromDatabase);
+		} else if (bookRequest.getScienceIndex() != 0) {
+			ScienceJournal scienceJournalFromDatabase = (ScienceJournal) bookRepository.findById(bookRequest.getBarcode()).orElse(null);
+
+			scienceJournalFromDatabase.setAuthor(bookRequest.getAuthor());
+			scienceJournalFromDatabase.setName(bookRequest.getName());
+			scienceJournalFromDatabase.setPricePerUnit(bookRequest.getPricePerUnit());
+			scienceJournalFromDatabase.setQuantity(bookRequest.getQuantity());
+			scienceJournalFromDatabase.setScienceIndex(bookRequest.getScienceIndex());
+
+			bookRepository.save(scienceJournalFromDatabase);
+		} else {
+			Book bookFromDatabase = bookRepository.findById(bookRequest.getBarcode()).orElse(null);
+
+			bookFromDatabase.setAuthor(bookRequest.getAuthor());
+			bookFromDatabase.setName(bookRequest.getName());
+			bookFromDatabase.setPricePerUnit(bookRequest.getPricePerUnit());
+			bookFromDatabase.setQuantity(bookRequest.getQuantity());
+
+			bookRepository.save(bookFromDatabase);
+		}
 	}
 
 	public BigDecimal getBookTotalPrice(long barcode) {
