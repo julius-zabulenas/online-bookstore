@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.onlinebookstore.entity.AntiqueBook;
 import com.example.onlinebookstore.entity.Book;
+import com.example.onlinebookstore.entity.ScienceJournal;
 import com.example.onlinebookstore.payload.BookRequest;
 import com.example.onlinebookstore.repository.BookRepository;
 
@@ -26,6 +27,10 @@ public class BookService {
 			bookRepository.save(new AntiqueBook(
 					bookRequest.getBarcode(), bookRequest.getName(), bookRequest.getAuthor(),
 					bookRequest.getQuantity(), bookRequest.getPricePerUnit(), bookRequest.getReleaseYear()));
+		} else if (bookRequest.getScienceIndex() != 0) {
+			bookRepository.save(new ScienceJournal(
+					bookRequest.getBarcode(), bookRequest.getName(), bookRequest.getAuthor(),
+					bookRequest.getQuantity(), bookRequest.getPricePerUnit(), bookRequest.getScienceIndex()));
 		} else {
 			bookRepository.save(new Book(
 					bookRequest.getBarcode(), bookRequest.getName(), bookRequest.getAuthor(),
