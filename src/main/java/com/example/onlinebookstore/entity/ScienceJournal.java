@@ -29,4 +29,10 @@ public class ScienceJournal extends Book {
 		this.scienceIndex = scienceIndex;
 	}
 
+	@Override
+	public BigDecimal bookTotalPrice() {
+		return new BigDecimal(super.getQuantity())
+				.multiply(super.getPricePerUnit()
+						.multiply(new BigDecimal(scienceIndex)));
+	}
 }
