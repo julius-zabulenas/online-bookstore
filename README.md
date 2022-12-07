@@ -8,11 +8,11 @@
 
 ### How to start it
 
-Clone the repository, navigate to that folder, open the terminal and run `mvn spring-boot:run`
+Clone the repository, navigate to that folder, open the terminal there and run `mvn spring-boot:run`
 
 ## API documentation
 
-`http://localhost:8080/api/books`
+### `http://localhost:8080/api/books`
 
 ### POST
 
@@ -31,7 +31,7 @@ An example payload JSON object to try:
 
 ### PUT
 
-Initiating a `PUT` method call on this endpoint edits a record in the database, based the barcode.
+Initiating a `PUT` method call on this endpoint edits a record in the database, based on the barcode.
 
 An example payload JSON object to try:
 ```
@@ -47,9 +47,9 @@ An example payload JSON object to try:
 
 ### GET
 
-Executing a `GET` call on this endpoint retrieves all the existing book records from the database.
+Executing a `GET` call on this endpoint retrieves all the existing book records from the database, ordered by quantity in descending order.
 
-The application is seeded with records by default, so a call on this link would return these values:
+The application is seeded with records by default, so a call with a freshly started server on this link would return these values:
 
 ```
 [
@@ -85,9 +85,9 @@ The application is seeded with records by default, so a call on this link would 
     }
 ]
 ```
-<br />
+<hr width="25%">
 
-`http://localhost:8080/api/books/{barcode}`
+### `http://localhost:8080/api/books/{barcode}`
 
 ### GET
 
@@ -105,13 +105,13 @@ So, initiating such a call like this from the client `http://localhost:8080/api/
     "releaseYear": "1883"
 }
 ```
-<br />
+<hr width="25%">
 
-`http://localhost:8080/books/{barcode}/total-price`
+### `http://localhost:8080/books/{barcode}/total-price`
 
 ### GET
 
-Returns a particular book's total price, as a result of multiplying the quantity by the price.
+Returns a particular book's total price, depending on what kind of book was requested.
 
 Running this line `http://localhost:8080/api/books/9786099619002/total-price` in your client of choice will return:
 
