@@ -70,4 +70,7 @@ public class Book {
 		this.pricePerUnit = pricePerUnit;
 	}
 
+	public BigDecimal bookTotalPrice() {
+		return new BigDecimal(quantity).multiply(pricePerUnit);
+	}
 }

@@ -78,7 +78,8 @@ public class BookService {
 	public BigDecimal getBookTotalPrice(long barcode) {
 		Book bookFromDatabase = bookRepository.findById(barcode).orElse(null);
 
-		return bookFromDatabase.getPricePerUnit().multiply(new BigDecimal(bookFromDatabase.getQuantity()));
+//		return bookFromDatabase.getPricePerUnit().multiply(new BigDecimal(bookFromDatabase.getQuantity()));
+		return bookFromDatabase.bookTotalPrice();
 	}
 
 	public List<Book> getBooks() {

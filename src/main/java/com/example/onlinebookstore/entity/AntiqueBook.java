@@ -32,4 +32,11 @@ public class AntiqueBook extends Book {
 		this.releaseYear = releaseYear;
 	}
 
+	@Override
+	public BigDecimal bookTotalPrice() {
+		return new BigDecimal(super.getQuantity()).multiply(super.getPricePerUnit()
+				.multiply(new BigDecimal(Year.now().getValue() - releaseYear.getValue()))
+				.divide(new BigDecimal(10)));
+	}
+
 }
