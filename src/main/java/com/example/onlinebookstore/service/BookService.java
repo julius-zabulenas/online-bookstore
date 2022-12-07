@@ -22,7 +22,7 @@ public class BookService {
 		this.bookRepository = bookRepository;
 	}
 
-	public void addBook(BookRequest bookRequest) {
+	public void addBook(BookRequest bookRequest) throws Exception {
 		if (bookRequest.getReleaseYear() != null) {
 			bookRepository.save(new AntiqueBook(
 					bookRequest.getBarcode(), bookRequest.getName(), bookRequest.getAuthor(),
