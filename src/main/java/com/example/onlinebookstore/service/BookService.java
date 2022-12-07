@@ -1,5 +1,6 @@
 package com.example.onlinebookstore.service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -33,5 +34,11 @@ public class BookService {
 		bookFromDatabase.setQuantity(book.getQuantity());
 
 		bookRepository.save(bookFromDatabase);
+	}
+
+	public BigDecimal getBookTotalPrice(long barcode) {
+		Book bookFromDatabase = bookRepository.findById(barcode).orElse(null);
+
+		return bookFromDatabase.getPricePerUnit().multiply(new BigDecimal(bookFromDatabase.getQuantity()));
 	}
 }
