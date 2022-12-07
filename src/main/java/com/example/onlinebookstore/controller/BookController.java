@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.onlinebookstore.entity.Book;
+import com.example.onlinebookstore.payload.BookRequest;
 import com.example.onlinebookstore.service.BookService;
 
 @RestController
@@ -28,8 +29,8 @@ public class BookController {
 	}
 
 	@PostMapping("/books")
-	public ResponseEntity<HttpStatus> addBook(@RequestBody Book book) {
-		bookService.addBook(book);
+	public ResponseEntity<HttpStatus> addBook(@RequestBody BookRequest bookRequest) {
+		bookService.addBook(bookRequest);
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
